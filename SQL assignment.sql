@@ -33,10 +33,6 @@ SELECT * FROM actor;
 
 ALTER TABLE actor
 
-#3a. 
-ALTER TABLE actor 
-MODIFY COLUMN middle_name blob;
-
 #3b. Very quickly you realize that entering descriptions for each actor is too much effort. Delete the description column.
 ALTER TABLE actor
 DROP COLUMN middle_name;
