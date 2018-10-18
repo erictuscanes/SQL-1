@@ -8,45 +8,50 @@ FROM actor;
 SELECT UPPER(CONCAT(first_name, ' ', last_name)) AS actor_name
 FROM actor;
 
-#2a
+#2a. You need to find the ID number, first name, and last name of an actor, of whom you know only the first name, "Joe." What is one query would you use to obtain this information?
 SELECT actor_id, first_name, last_name
 FROM actor
 WHERE first_name = 'JOE';
 
-#2B
+#2b. Find all actors whose last name contain the letters GEN:
 SELECT first_name, last_name from actor
 WHERE last_name ="%GEN%";
 
-#2C
+#2c. Find all actors whose last names contain the letters LI. This time, order the rows by last name and first name, in that order:
 SELECT actor_id, first_name, last_name 
 FROM actor
 WHERE last_name LIKE '%LI%'
 ORDER BY last_name, first_name;
 
-#2D
+#2d. Using IN, display the country_id and country columns of the following countries: Afghanistan, Bangladesh, and China:
 SELECT country_id,  country
 FROM country
 WHERE country IN ('Afghanistan', 'Bangladesh', 'China');
 
-#2E
+#3a. You want to keep a description of each actor. You don't think you will be performing queries on a description, so create a column in the table actor named description and use the data type BLOB (Make sure to research the type BLOB, as the difference between it and VARCHAR are significant).
 SELECT * FROM actor;
 
 ALTER TABLE actor
 ADD COLUMN  middle_name VARCHAR(75) AFTER first_name;
 
+#3a. 
 ALTER TABLE actor 
 MODIFY COLUMN middle_name blob;
 
+#3b. Very quickly you realize that entering descriptions for each actor is too much effort. Delete the description column.
 ALTER TABLE actor
 DROP COLUMN middle_name;
 
+#4a. List the last names of actors, as well as how many actors have that last name.
 SELECT last_name, COUNT(*) AS `Count`
 FROM actor
 GROUP BY last_name;
 
+#4b List last names of actors and the number of actors who have that last name, but only for names that are shared by at least two actors
 SELECT last_name, COUNT(*) AS 'Number of Actors' 
 FROM actor GROUP BY last_name HAVING count(*) >=2;
 
+#4c. The actor HARPO WILLIAMS was accidentally entered in the actor table as GROUCHO WILLIAMS. Write a query to fix the record.
 UPDATE actor 
 SET first_name = 'HARPO'
 WHERE First_name = "Groucho" AND last_name = "Williams";
