@@ -28,15 +28,6 @@ SELECT country_id,  country
 FROM country
 WHERE country IN ('Afghanistan', 'Bangladesh', 'China');
 
-#3a. You want to keep a description of each actor. You don't think you will be performing queries on a description, so create a column in the table actor named description and use the data type BLOB (Make sure to research the type BLOB, as the difference between it and VARCHAR are significant).
-SELECT * FROM actor;
-
-ALTER TABLE actor
-
-#3b. Very quickly you realize that entering descriptions for each actor is too much effort. Delete the description column.
-ALTER TABLE actor
-DROP COLUMN middle_name;
-
 #4a. List the last names of actors, as well as how many actors have that last name.
 SELECT last_name, COUNT(*) AS `Count`
 FROM actor
