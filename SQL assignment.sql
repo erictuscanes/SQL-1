@@ -32,7 +32,6 @@ WHERE country IN ('Afghanistan', 'Bangladesh', 'China');
 SELECT * FROM actor;
 
 ALTER TABLE actor
-ADD COLUMN  middle_name VARCHAR(75) AFTER first_name;
 
 #3a. 
 ALTER TABLE actor 
